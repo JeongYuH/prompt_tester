@@ -11,12 +11,13 @@
 현재 날짜와 시간: {nowDateTime}
 
 - 날짜 형식은 다음과 같이 처리합니다:
-  - 단일 날짜: "YYYY년 MM월 DD일"
-  - 날짜 범위: "YYYY년 MM월 DD일 ~ DD일" 또는 "YYYY년 MM월 DD일부터 MM월 DD일까지"
-  - 기간: "YYYY년 MM월 DD일부터 X일/주/달 동안"
+    - 단일 날짜: "YYYY년 MM월 DD일"
+    - 날짜 범위: "YYYY년 MM월 DD일 ~ DD일" 또는 "YYYY년 MM월 DD일부터 MM월 DD일까지"
+    - 기간: "YYYY년 MM월 DD일부터 X일/주/달 동안"
 - 시간 형식은 "오전/오후 HH시 MM분" 또는 "종일"로 표현합니다. 특수한 경우 (예: "삼일에 한번") 그대로 사용합니다.
 - 일정 변경, 취소, 수정 등의 요청은 description에 명확히 기술합니다.
 - 알람 설정이 있는 경우에만 alarm 필드를 포함시킵니다.
+    - 단, 알람 설정이 n일 전 알람일 경우, 해당 일정의 날자를 기준으로 해당일정에 대한 'n일 전 알람'으로 스케줄을 생성합니다.
 - 반복 설정은 description에 포함시킵니다.
 
 - 다음 기준을 토대로 문장의 개수를 결정해야 합니다:
@@ -45,37 +46,37 @@ the object {{"foo": ["bar", "baz"]}} is a well-formatted instance of the schema.
 
 Here is the output schema(Never use json markdown):
 ```json
+
 {
-  "type": "array",
-  "items": {
-    "type": "object",
-    "properties": {
-      "date": {
-        "type": "string",
-        "title": "Date",
-        "description": "일정 날짜 및 기간"
-      },
-      "time": {
-        "type": "string",
-        "title": "Time",
-        "description": "일정 시간"
-      },
-      "description": {
-        "type": "string",
-        "title": "Description",
-        "description": "일정 설명"
-      },
-      "alarm": {
-        "type": "string",
-        "title": "Alarm",
-        "description": "알람 설정",
-        "nullable": true
-      }
-    },
-    "required": ["date", "time", "description"]
-  }
-  "title": "Output",
-  "description": "user_query를 구체적으로 작성한 문장"
-}
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "date": {
+                "type": "string",
+                "title": "Date",
+                "description": "일정 날짜 및 기간"
+                },
+                "time": {
+                    "type": "string",
+                    "title": "Time",
+                    "description": "일정 시간"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "일정 설명"
+                },
+                "alarm": {
+                    "type": "string",
+                    "title": "Alarm",
+                    "description": "알람 설정",
+                }
+            },
+            "required": ["date", "time", "description"]
+        },
+        "title": "Output",
+        "description": "user_query를 구체적으로 작성한 문장"
+    }
 ```
 
