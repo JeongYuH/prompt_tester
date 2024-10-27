@@ -28,7 +28,7 @@ with st.sidebar:
 
 # 시스템 프롬프트 입력
 system_prompt = st.text_area("시스템 프롬프트를 입력하세요:", height=200)
-system_prompt = system_prompt.replace("{current_time}", get_current_time())
+system_prompt = system_prompt.replace("{nowDateTime}", get_current_time())
 
 # 사용자 입력
 user_query = st.text_area("프롬프트를 입력하세요:", height=200)
